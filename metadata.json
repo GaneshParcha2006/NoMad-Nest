@@ -1,0 +1,7 @@
+{
+  "name": "NomadNest",
+  "description": "A professional travel companion app to discover nearby hotels and restaurants, save favorites, and explore cities using AI-powered insights.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user profile information and preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique identifier for the user." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "displayName": { "type": "string", "description": "The user's display name." },
+        "photoURL": { "type": "string", "format": "uri", "description": "The user's profile photo URL." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "The time the profile was created." }
+      },
+      "required": ["uid", "email", "createdAt"]
+    },
+    "Favorite": {
+      "title": "Favorite Place",
+      "description": "A place saved by the user.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The user ID who saved the favorite." },
+        "placeId": { "type": "string", "description": "The unique ID of the place (from Google Maps)." },
+        "name": { "type": "string", "description": "The name of the place." },
+        "address": { "type": "string", "description": "The address of the place." },
+        "rating": { "type": "number", "description": "The rating of the place." },
+        "photoUrl": { "type": "string", "format": "uri", "description": "A photo URL for the place." },
+        "category": { "type": "string", "description": "The category of the place (hotel, restaurant, etc.)." },
+        "savedAt": { "type": "string", "format": "date-time", "description": "The time the place was saved." }
+      },
+      "required": ["uid", "placeId", "name", "savedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document."
+    },
+    "/users/{userId}/favorites/{favoriteId}": {
+      "schema": "Favorite",
+      "description": "User's favorite places."
+    }
+  }
+}
